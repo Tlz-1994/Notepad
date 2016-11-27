@@ -1,0 +1,58 @@
+//
+//  PrefixHeader.pch
+//  NoteRecord
+//
+//  Created by stefanie on 16/4/1.
+//  Copyright © 2016年 Stefanie. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// 通知的宏
+#define NOTIFACTION_SEND @"notifation_send"
+#define MESSAGE_SEND @"message_send"
+#define USERID @"user_id"
+
+#define LOAD_STATUS @"loadstatus"
+
+// 照片的路径 根据时间不同自动生成不同的照片路径
+#define FILE_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0]
+
+// API接口用的key
+#define API_KEY @"3851850dedb1142fb124b7d05fa5e718"
+// 高德地图APIkey
+#define GAODEAPI_KEY @"e785011d5b092e9097f98e8974c0f62b"
+
+//设置Log输出模式
+#ifdef DEBUG
+#define LZLog(...) NSLog(__VA_ARGS__)
+#else
+#define LZLog(...)
+#endif
+
+//单例
+#define LZNSUserDefaults [NSUserDefaults standardUserDefaults]
+
+// 颜色
+#define LZColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+// 屏幕尺寸
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+
+// 接口
+#define WEATHER_URL @"http://apis.baidu.com/apistore/weatherservice/cityname"
+
+#import "LZNavigationController.h"
+#import "UIView+LZExtension.h"
+#import "AFNetworking.h"
+#import "AMSmoothAlertView.h"
+#import "LZLabel.h"
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
