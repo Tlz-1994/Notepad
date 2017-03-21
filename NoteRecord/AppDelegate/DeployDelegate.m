@@ -8,8 +8,8 @@
 
 #import "DeployDelegate.h"
 #import "LZViewController.h"
-
 #import "LZLoadViewController.h"
+#import <AMapFoundation/AMapFoundationKit/AMapServices.h>
 
 @implementation DeployDelegate
 
@@ -29,8 +29,9 @@
 
 // 高德
 + (void)settingIBS {
-    [AMapSearchServices sharedServices].apiKey = (NSString *)GAODEAPI_KEY;
-    [AMapLocationServices sharedServices].apiKey = (NSString *)GAODEAPI_KEY;
+    [AMapServices sharedServices].apiKey = (NSString *)GAODEAPI_KEY;
+//    [AMapSearchServices sharedServices].apiKey = (NSString *)GAODEAPI_KEY;
+//    [AMapLocationServices sharedServices].apiKey = (NSString *)GAODEAPI_KEY;
 }
 
 @end

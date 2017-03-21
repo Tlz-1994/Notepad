@@ -27,8 +27,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>打开摄像头，来一发自拍</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>AMapLocationKit需要定位权限才可以使用</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>我要看你的相册，快点允许</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

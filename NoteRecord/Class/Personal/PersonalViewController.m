@@ -65,7 +65,7 @@
     _logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _logoutBtn.frame = CGRectMake(0, 0, 105, 50);
     _logoutBtn.centerX = kWidth/2.0;
-    _logoutBtn.y = CGRectGetMaxY(_recordBtn.frame)+10;
+    _logoutBtn.y = CGRectGetMaxY(_recordBtn.frame)+40;
     _logoutBtn.titleLabel.font = [UIFont systemFontOfSize:20];
     [_logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
     [_logoutBtn setTitleColor:LZColor(51, 51, 51) forState:UIControlStateNormal];
@@ -73,7 +73,7 @@
     [self.view addSubview:_logoutBtn];
     
     [_logoutBtn addTarget:self action:@selector(logoutApplication) forControlEvents:UIControlEventTouchUpInside];
-    
+
 }
 
 #pragma mark - 查看历史

@@ -1,4 +1,4 @@
-# FoldingTabBar.iOS
+# FoldingTabBar.iOS [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Folding Tab Bar and Tab Bar Controller
 
@@ -16,9 +16,14 @@ iOS 7.0
 
 ## Installation
 
+####[Carthage](https://github.com/Carthage/Carthage)
+```
+github "Yalantis/FoldingTabBar.iOS"
+```
+
 ####[CocoaPods](http://cocoapods.org)
 ```ruby
-pod 'FoldingTabBar', '~> 1.0.1'
+pod 'FoldingTabBar', '~> 1.0'
 ```
 
 ####Manual Installation
@@ -53,7 +58,10 @@ Here is an instruction of how to use `YALFoldingTabBarController` in the Storybo
 
 1. Add native `UITabBarController` to the storyboard, establish relationships with its view controllers.
 2.  Choose `YALFoldingTabBarController` as custom class for `UITabBarController`.
+3.  Choose `YALCustomHeightTabBar` as custom class for `UITabBar` inside `YALFoldingTabBarController`
 3.  In AppDelegate method take out an instance of `YALFoldingTabBarController` from the window.rootViewController and supply it with images for the left and right tabBarItems respectively. Also you can add your own image for the center button of `YALFoldingTabBar`.
+
+##Objective-C
 
 ```objective-c
     YALFoldingTabBarController *tabBarController = (YALFoldingTabBarController *) self.window.rootViewController;
@@ -81,20 +89,91 @@ Here is an instruction of how to use `YALFoldingTabBarController` in the Storybo
                                                      rightItemImage:nil];
 
 ```
+##Swift
 
-If you want to handle touches on extra tabBarItems import `YALTabBarInteracting` protocol to the subclass of the proper `UIVIewController` and implement these methods: 
+```swift
+    if let tabBarController = window?.rootViewController as? YALFoldingTabBarController {
 
-```objective-c
-- (void)extraLeftItemDidPressed;
-- (void)extraRightItemDidPressed;
+        //leftBarItems
+
+        let firstItem = YALTabBarItem(
+            itemImage: UIImage(named: "nearby_icon")!,
+            leftItemImage: nil,
+            rightItemImage: nil
+        )
+
+        let secondItem = YALTabBarItem(
+            itemImage: UIImage(named: "profile_icon")!,
+            leftItemImage: UIImage(named: "edit_icon")!,
+            rightItemImage: nil
+        )
+
+        tabBarController.leftBarItems = [firstItem, secondItem]
+
+        //rightBarItems
+
+        let thirdItem = YALTabBarItem(
+            itemImage: UIImage(named: "chats_icon")!,
+            leftItemImage: UIImage(named: "search_icon")!,
+            rightItemImage: UIImage(named: "new_chat_icon")!
+        )
+
+        let forthItem = YALTabBarItem(
+            itemImage: UIImage(named: "settings_icon")!,
+            leftItemImage: nil,
+            rightItemImage: nil
+        )
+
+        tabBarController.rightBarItems = [thirdItem, forthItem]
+    }
 ```
- If you want to observe contracting and expanding animation states in `YALFoldingTabBar` the following methods of `YALTabBarInteracting` protocol can be implemented:
-```objective-c
-- (void)tabBarViewWillCollapse;
-- (void)tabBarViewWillExpand;
 
-- (void)tabBarViewDidCollapsed;
-- (void)tabBarViewDidExpanded;
+ If you want to handle touches on extra tabBarItems import `YALTabBarDelegate` protocol to the subclass of the proper `UIVIewController` and implement these methods: 
+##Objective-C
+
+```objective-c
+- (void)tabBarDidSelectExtraLeftItem:(YALFoldingTabBar *)tabBar;
+- (void)tabBarDidSelectExtraRightItem:(YALFoldingTabBar *)tabBar;
+```
+##Swift
+
+```swift
+func tabBarDidSelectExtraLeftItem(tabBar: YALFoldingTabBar!)
+func tabBarDidSelectExtraRightItem(tabBar: YALFoldingTabBar!)
+```
+
+If you want to handle touches on tabBarItems by indexes import `YALTabBarDelegate` protocol to the subclass of the proper `UIVIewController` and implement these methods: 
+##Objective-C
+
+```objective-c
+- (void)tabBar:(YALFoldingTabBar *)tabBar didSelectItemAtIndex:(NSUInteger)index;
+- (BOOL)tabBar:(YALFoldingTabBar *)tabBar shouldSelectItemAtIndex:(NSUInteger)index;
+```
+##Swift
+
+```swift
+func tabBar(tabBar: YALFoldingTabBar!, didSelectItemAtIndex index: UInt)
+func tabBar(tabBar: YALFoldingTabBar!, shouldSelectItemAtIndex index: UInt) -> Bool
+```
+
+ If you want to observe contracting and expanding animation states in `YALFoldingTabBar` the following methods of `YALTabBarDelegate` protocol can be implemented:
+##Objective-C
+
+```objective-c
+- (void)tabBarWillCollapse:(YALFoldingTabBar *)tabBar;
+- (void)tabBarWillExpand:(YALFoldingTabBar *)tabBar;
+
+- (void)tabBarDidCollapse:(YALFoldingTabBar *)tabBar;
+- (void)tabBarDidExpand:(YALFoldingTabBar *)tabBar;
+```
+##Swift
+
+```swift
+func tabBarWillCollapse(tabBar: YALFoldingTabBar!)
+func tabBarWillExpand(tabBar: YALFoldingTabBar!)
+
+func tabBarDidCollapse(tabBar: YALFoldingTabBar!)
+func tabBarDidExpand(tabBar: YALFoldingTabBar!)
 ```
 
 ##Important notes
@@ -106,25 +185,82 @@ You can see how we did it on the example project.
 You can make the following configurations for custom tabBar:
 
 1) Specify height 
+##Objective-C
+
 ```objective-c
 tabBarController.tabBarViewHeight = YALTabBarViewDefaultHeight;
 ```  
+##Swift
+
+```swift
+tabBarController.tabBarViewHeight = YALTabBarViewDefaultHeight
+```  
+
 2) Specify insets and offsets
+##Objective-C
+
 ```objective-c
     tabBarController.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets;
     tabBarController.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets;
     tabBarController.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset;
+```
+##Swift
 
-```  
+```swift
+tabBarController.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets
+tabBarController.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets
+tabBarController.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset
+```
+
 3) Specify colors
+##Objective-C
+
 ```objective-c
     tabBarController.tabBarView.backgroundColor = [UIColor colorWithRed:94.0/255.0 green:91.0/255.0 blue:149.0/255.0 alpha:1];
     tabBarController.tabBarView.tabBarColor = [UIColor colorWithRed:72.0/255.0 green:211.0/255.0 blue:178.0/255.0 alpha:1];
-```  
+    tabBarController.tabBarView.dotColor = [UIColor colorWithRed:94.0/255.0 green:91.0/255.0 blue:149.0/255.0 alpha:1];
+``` 
+##Swift
+
+```swift
+tabBarController.tabBarView.backgroundColor = UIColor(
+                                                  red: 94.0/255.0,
+                                                  green: 91.0/255.0,
+                                                  blue: 149.0/255.0,
+                                                  alpha: 1
+                                              )
+
+tabBarController.tabBarView.tabBarColor = UIColor(
+                                              red: 72.0/255.0,
+                                              green: 211.0/255.0,
+                                              blue: 178.0/255.0,
+                                              alpha: 1
+                                          )
+
+tabBarController.tabBarView.dotColor = UIColor(
+                                           red: 94.0/255.0,
+                                           green: 91.0/255.0,
+                                           blue: 149.0/255.0,
+                                           alpha: 1
+                                       )
+```
 4) Specify height for additional left and right buttons
+##Objective-C
+
 ```objective-c
     tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;
 ```  
+##Swift
+
+```swift
+tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight
+```  
+
+## Let us know!
+
+We’d be really happy if you sent us links to your projects where you use our component. Just send an email to github@yalantis.com And do let us know if you have any questions or suggestion regarding the animation. 
+
+P.S. We’re going to publish more awesomeness wrapped in code and a tutorial on how to make UI for iOS (Android) better than better. Stay tuned!
 
 ##License
 

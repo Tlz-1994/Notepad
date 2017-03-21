@@ -3,8 +3,9 @@
 #import <UIKit/UIKit.h>
 
 @class YALFoldingTabBar;
+@class YALFoldingTabBarController;
 
-@protocol YALTabBarViewDataSource <NSObject>
+@protocol YALTabBarDataSource <NSObject>
 
 @required
 - (NSArray *)leftTabBarItemsInTabBarView:(YALFoldingTabBar *)tabBarView;
@@ -13,35 +14,43 @@
 
 @end
 
-@protocol YALTabBarViewDelegate <NSObject>
+@protocol YALTabBarDelegate <NSObject>
 
 @optional
-- (void)itemInTabBarViewPressed:(YALFoldingTabBar *)tabBarView atIndex:(NSUInteger)index;
+- (void)tabBar:(YALFoldingTabBar *)tabBar didSelectItemAtIndex:(NSUInteger)index;
+- (BOOL)tabBar:(YALFoldingTabBar *)tabBar shouldSelectItemAtIndex:(NSUInteger)index;
 
-- (void)tabBarViewWillCollapse:(YALFoldingTabBar *)tabBarView;
-- (void)tabBarViewWillExpand:(YALFoldingTabBar *)tabBarView;
+- (void)tabBarWillCollapse:(YALFoldingTabBar *)tabBar;
+- (void)tabBarWillExpand:(YALFoldingTabBar *)tabBar;
 
-- (void)tabBarViewDidCollapse:(YALFoldingTabBar *)tabBarView;
-- (void)tabBarViewDidExpand:(YALFoldingTabBar *)tabBarView;
+- (void)tabBarDidCollapse:(YALFoldingTabBar *)tabBar;
+- (void)tabBarDidExpand:(YALFoldingTabBar *)tabBar;
 
-- (void)extraLeftItemDidPressInTabBarView:(YALFoldingTabBar *)tabBarView;
-- (void)extraRightItemDidPressInTabBarView:(YALFoldingTabBar *)tabBarView;
+- (void)tabBarDidSelectExtraLeftItem:(YALFoldingTabBar *)tabBar;
+- (void)tabBarDidSelectExtraRightItem:(YALFoldingTabBar *)tabBar;
 
 @end
 
 typedef NS_ENUM(NSUInteger, YALTabBarState) {
-    YALStateCollapsed,
-    YALStateExpanded
+    YALTabBarStateCollapsed,
+    YALTabBarStateExpanded
 };
 
 @interface YALFoldingTabBar : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame state:(YALTabBarState)state;
+- (instancetype)initWithController:(YALFoldingTabBarController *)controller;
 
-@property (nonatomic, weak) IBOutlet id<YALTabBarViewDataSource> dataSource;
-@property (nonatomic, weak) IBOutlet id<YALTabBarViewDelegate> delegate;
+/**
+ *  Default data source is YALFoldingTabBarController.
+ */
+@property (nonatomic, weak) id<YALTabBarDataSource> dataSource;
 
-@property (nonatomic, assign, readonly) YALTabBarState state;
+/**
+ *  Default delegate is YALFoldingTabBarController.
+ */
+@property (nonatomic, weak) id<YALTabBarDelegate> delegate;
+
+@property (nonatomic, assign) YALTabBarState state;
 @property (nonatomic, assign) NSUInteger selectedTabBarItemIndex;
 
 @property (nonatomic, copy) UIColor *tabBarColor;

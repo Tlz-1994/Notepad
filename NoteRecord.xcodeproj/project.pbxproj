@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8719E246292796A90111C7B9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FEC66354A4E43122B6B55C /* libPods.a */; };
+		D0518DFF9F527EC9A5DCE70C /* libPods-NoteRecordUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A34579C37EA9C77E52B1E5 /* libPods-NoteRecordUITests.a */; };
+		D1E603993703CBD58E90B4B4 /* libPods-NoteRecordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4D6DC9B3B72C5B0B62FDC2 /* libPods-NoteRecordTests.a */; };
+		D540DEEA35206D52D252F5BA /* libPods-NoteRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F42CD5C7B0A97AB558A3D1 /* libPods-NoteRecord.a */; };
 		DA0F62E41CC23476002D29BC /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = DA0F62E31CC23476002D29BC /* blank.png */; };
 		DA8188601CBF6FAF00A4D94E /* launchbg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DA81885F1CBF6FAF00A4D94E /* launchbg.jpeg */; };
 		DA8188621CBF705C00A4D94E /* bgbg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DA8188611CBF705C00A4D94E /* bgbg.jpeg */; };
@@ -48,6 +50,10 @@
 		DA83EF581CC499A0006ACD98 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83EF471CC499A0006ACD98 /* UIImageView+WebCache.m */; };
 		DA83EF591CC499A0006ACD98 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83EF491CC499A0006ACD98 /* UIView+WebCacheOperation.m */; };
 		DA83EF5C1CD1E3C1006ACD98 /* UIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA83EF5B1CD1E3C1006ACD98 /* UIImage+Rotation.m */; };
+		DA97B6F21E80CD850064032E /* LZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA97B6F11E80CD850064032E /* LZViewController.m */; };
+		DA97B6FB1E80D1DB0064032E /* LLSimpleCamera+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = DA97B6F61E80D1DB0064032E /* LLSimpleCamera+Helper.m */; };
+		DA97B6FC1E80D1DB0064032E /* LLSimpleCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = DA97B6F81E80D1DB0064032E /* LLSimpleCamera.m */; };
+		DA97B6FD1E80D1DB0064032E /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA97B6FA1E80D1DB0064032E /* UIImage+FixOrientation.m */; };
 		DAC5D26E1CAE5A5A002D2C86 /* LZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC5D2661CAE5A5A002D2C86 /* LZAppDelegate.m */; };
 		DAC5D2701CAE5A5A002D2C86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC5D2691CAE5A5A002D2C86 /* LaunchScreen.storyboard */; };
 		DAC5D2791CAE5C53002D2C86 /* LZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC5D2781CAE5C53002D2C86 /* LZNavigationController.m */; };
@@ -75,7 +81,6 @@
 		DAC5D2F21CAF9D4A002D2C86 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC5D2F11CAF9D4A002D2C86 /* WeatherModel.m */; };
 		DAC5D2F41CAFA513002D2C86 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC5D2F31CAFA513002D2C86 /* CoreLocation.framework */; };
 		DAE1624C1CAE42BE00F74739 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1624B1CAE42BE00F74739 /* main.m */; };
-		DAE162521CAE42BE00F74739 /* LZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE162511CAE42BE00F74739 /* LZViewController.m */; };
 		DAE162651CAE42BE00F74739 /* NoteRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE162641CAE42BE00F74739 /* NoteRecordTests.m */; };
 		DAE162701CAE42BE00F74739 /* NoteRecordUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1626F1CAE42BE00F74739 /* NoteRecordUITests.m */; };
 /* End PBXBuildFile section */
@@ -98,9 +103,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		234ACE825F1F0523C7830A39 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		50FEC66354A4E43122B6B55C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		729963EC73CE6E72C24D621E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		04A34579C37EA9C77E52B1E5 /* libPods-NoteRecordUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoteRecordUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F42CD5C7B0A97AB558A3D1 /* libPods-NoteRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoteRecord.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF4D6DC9B3B72C5B0B62FDC2 /* libPods-NoteRecordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoteRecordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B13B0C62BA26BA84C874075B /* Pods-NoteRecordTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteRecordTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoteRecordTests/Pods-NoteRecordTests.release.xcconfig"; sourceTree = "<group>"; };
+		CAE880D31BB1940F18E0F3DB /* Pods-NoteRecordUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteRecordUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoteRecordUITests/Pods-NoteRecordUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CDFF6FC5840F3862EC4C6A55 /* Pods-NoteRecordTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteRecordTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoteRecordTests/Pods-NoteRecordTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D72FA9EEF074E982E3A28A2F /* Pods-NoteRecordUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteRecordUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoteRecordUITests/Pods-NoteRecordUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA0F62E31CC23476002D29BC /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		DA81885F1CBF6FAF00A4D94E /* launchbg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launchbg.jpeg; sourceTree = "<group>"; };
 		DA8188611CBF705C00A4D94E /* bgbg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgbg.jpeg; sourceTree = "<group>"; };
@@ -170,6 +179,14 @@
 		DA83EF491CC499A0006ACD98 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		DA83EF5A1CD1E3C1006ACD98 /* UIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotation.h"; sourceTree = "<group>"; };
 		DA83EF5B1CD1E3C1006ACD98 /* UIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotation.m"; sourceTree = "<group>"; };
+		DA97B6F01E80CD850064032E /* LZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LZViewController.h; path = NoteRecord/LZViewController.h; sourceTree = SOURCE_ROOT; };
+		DA97B6F11E80CD850064032E /* LZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LZViewController.m; path = NoteRecord/LZViewController.m; sourceTree = SOURCE_ROOT; };
+		DA97B6F51E80D1DB0064032E /* LLSimpleCamera+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LLSimpleCamera+Helper.h"; sourceTree = "<group>"; };
+		DA97B6F61E80D1DB0064032E /* LLSimpleCamera+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LLSimpleCamera+Helper.m"; sourceTree = "<group>"; };
+		DA97B6F71E80D1DB0064032E /* LLSimpleCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSimpleCamera.h; sourceTree = "<group>"; };
+		DA97B6F81E80D1DB0064032E /* LLSimpleCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSimpleCamera.m; sourceTree = "<group>"; };
+		DA97B6F91E80D1DB0064032E /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		DA97B6FA1E80D1DB0064032E /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		DAC5D2651CAE5A5A002D2C86 /* LZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LZAppDelegate.h; path = ../LZAppDelegate.h; sourceTree = "<group>"; };
 		DAC5D2661CAE5A5A002D2C86 /* LZAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LZAppDelegate.m; path = ../LZAppDelegate.m; sourceTree = "<group>"; };
 		DAC5D26A1CAE5A5A002D2C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -218,14 +235,14 @@
 		DAC5D2F31CAFA513002D2C86 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DAE162471CAE42BE00F74739 /* NoteRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE1624B1CAE42BE00F74739 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DAE162501CAE42BE00F74739 /* LZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LZViewController.h; path = ../../LZViewController.h; sourceTree = "<group>"; };
-		DAE162511CAE42BE00F74739 /* LZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LZViewController.m; path = ../../LZViewController.m; sourceTree = "<group>"; };
 		DAE162601CAE42BE00F74739 /* NoteRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE162641CAE42BE00F74739 /* NoteRecordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteRecordTests.m; sourceTree = "<group>"; };
 		DAE162661CAE42BE00F74739 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAE1626B1CAE42BE00F74739 /* NoteRecordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteRecordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE1626F1CAE42BE00F74739 /* NoteRecordUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteRecordUITests.m; sourceTree = "<group>"; };
 		DAE162711CAE42BE00F74739 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9D2C4A14EA34D37EAB0510C /* Pods-NoteRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoteRecord/Pods-NoteRecord.release.xcconfig"; sourceTree = "<group>"; };
+		FAF0BCC13556A85080E486D6 /* Pods-NoteRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoteRecord/Pods-NoteRecord.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC5D2F41CAFA513002D2C86 /* CoreLocation.framework in Frameworks */,
-				8719E246292796A90111C7B9 /* libPods.a in Frameworks */,
+				D540DEEA35206D52D252F5BA /* libPods-NoteRecord.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +259,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E603993703CBD58E90B4B4 /* libPods-NoteRecordTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,12 +267,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0518DFF9F527EC9A5DCE70C /* libPods-NoteRecordUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CB673746FD23FDFA8FC0E5B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAF0BCC13556A85080E486D6 /* Pods-NoteRecord.debug.xcconfig */,
+				E9D2C4A14EA34D37EAB0510C /* Pods-NoteRecord.release.xcconfig */,
+				CDFF6FC5840F3862EC4C6A55 /* Pods-NoteRecordTests.debug.xcconfig */,
+				B13B0C62BA26BA84C874075B /* Pods-NoteRecordTests.release.xcconfig */,
+				CAE880D31BB1940F18E0F3DB /* Pods-NoteRecordUITests.debug.xcconfig */,
+				D72FA9EEF074E982E3A28A2F /* Pods-NoteRecordUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA81886B1CBF89DA00A4D94E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +374,19 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		DA97B6F41E80D1DB0064032E /* LLSimpleCamera */ = {
+			isa = PBXGroup;
+			children = (
+				DA97B6F51E80D1DB0064032E /* LLSimpleCamera+Helper.h */,
+				DA97B6F61E80D1DB0064032E /* LLSimpleCamera+Helper.m */,
+				DA97B6F71E80D1DB0064032E /* LLSimpleCamera.h */,
+				DA97B6F81E80D1DB0064032E /* LLSimpleCamera.m */,
+				DA97B6F91E80D1DB0064032E /* UIImage+FixOrientation.h */,
+				DA97B6FA1E80D1DB0064032E /* UIImage+FixOrientation.m */,
+			);
+			path = LLSimpleCamera;
+			sourceTree = "<group>";
+		};
 		DAC5D2681CAE5A5A002D2C86 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,8 +411,8 @@
 		DAC5D2741CAE5BDF002D2C86 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				DAE162501CAE42BE00F74739 /* LZViewController.h */,
-				DAE162511CAE42BE00F74739 /* LZViewController.m */,
+				DA97B6F01E80CD850064032E /* LZViewController.h */,
+				DA97B6F11E80CD850064032E /* LZViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -402,6 +447,7 @@
 		DAC5D2801CAE6564002D2C86 /* ThirdTool */ = {
 			isa = PBXGroup;
 			children = (
+				DA97B6F41E80D1DB0064032E /* LLSimpleCamera */,
 				DA83EF281CC499A0006ACD98 /* SDWebImage */,
 				DA83EF1D1CC498DF006ACD98 /* SDPhotoBrowser */,
 				DA83EF161CC49280006ACD98 /* PhotoContainer */,
@@ -523,8 +569,8 @@
 				DAE162631CAE42BE00F74739 /* NoteRecordTests */,
 				DAE1626E1CAE42BE00F74739 /* NoteRecordUITests */,
 				DAE162481CAE42BE00F74739 /* Products */,
-				E758028C7173AD87CBBC0546 /* Pods */,
 				DEBE744B08B3F225882CA153 /* Frameworks */,
+				9CB673746FD23FDFA8FC0E5B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -583,18 +629,11 @@
 			isa = PBXGroup;
 			children = (
 				DAC5D2F31CAFA513002D2C86 /* CoreLocation.framework */,
-				50FEC66354A4E43122B6B55C /* libPods.a */,
+				54F42CD5C7B0A97AB558A3D1 /* libPods-NoteRecord.a */,
+				AF4D6DC9B3B72C5B0B62FDC2 /* libPods-NoteRecordTests.a */,
+				04A34579C37EA9C77E52B1E5 /* libPods-NoteRecordUITests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E758028C7173AD87CBBC0546 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				234ACE825F1F0523C7830A39 /* Pods.debug.xcconfig */,
-				729963EC73CE6E72C24D621E /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -604,12 +643,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAE162741CAE42BE00F74739 /* Build configuration list for PBXNativeTarget "NoteRecord" */;
 			buildPhases = (
-				B65DD8BBF31788E7A4FE1D73 /* Check Pods Manifest.lock */,
+				B110D7A1413C88227EC2151B /* [CP] Check Pods Manifest.lock */,
 				DAE162431CAE42BE00F74739 /* Sources */,
 				DAE162441CAE42BE00F74739 /* Frameworks */,
 				DAE162451CAE42BE00F74739 /* Resources */,
-				61D689DFF7B622785B1CD121 /* Embed Pods Frameworks */,
-				6D93F3C3EE04E4EC95720384 /* Copy Pods Resources */,
+				546433F2F3192635C170E767 /* [CP] Embed Pods Frameworks */,
+				F31FAECDB3E867183046331E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -624,9 +663,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAE162771CAE42BE00F74739 /* Build configuration list for PBXNativeTarget "NoteRecordTests" */;
 			buildPhases = (
+				34F3E00A646BBB449BE98C64 /* [CP] Check Pods Manifest.lock */,
 				DAE1625C1CAE42BE00F74739 /* Sources */,
 				DAE1625D1CAE42BE00F74739 /* Frameworks */,
 				DAE1625E1CAE42BE00F74739 /* Resources */,
+				D37B65B29C2DC9E0CBCA30DF /* [CP] Embed Pods Frameworks */,
+				B09C1F2A2B56F4C987F02729 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -642,9 +684,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAE1627A1CAE42BE00F74739 /* Build configuration list for PBXNativeTarget "NoteRecordUITests" */;
 			buildPhases = (
+				B3B20FC5F49BEC49C16CBC79 /* [CP] Check Pods Manifest.lock */,
 				DAE162671CAE42BE00F74739 /* Sources */,
 				DAE162681CAE42BE00F74739 /* Frameworks */,
 				DAE162691CAE42BE00F74739 /* Resources */,
+				F15F4715AB73EB78A444B5FA /* [CP] Embed Pods Frameworks */,
+				B46A7D1EFC2C2956F9BB0C8A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -667,6 +712,8 @@
 				TargetAttributes = {
 					DAE162461CAE42BE00F74739 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = DZNJ4F4E32;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -752,49 +799,139 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		61D689DFF7B622785B1CD121 /* Embed Pods Frameworks */ = {
+		34F3E00A646BBB449BE98C64 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6D93F3C3EE04E4EC95720384 /* Copy Pods Resources */ = {
+		546433F2F3192635C170E767 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteRecord/Pods-NoteRecord-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B65DD8BBF31788E7A4FE1D73 /* Check Pods Manifest.lock */ = {
+		B09C1F2A2B56F4C987F02729 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteRecordTests/Pods-NoteRecordTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B110D7A1413C88227EC2151B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B3B20FC5F49BEC49C16CBC79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B46A7D1EFC2C2956F9BB0C8A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteRecordUITests/Pods-NoteRecordUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D37B65B29C2DC9E0CBCA30DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteRecordTests/Pods-NoteRecordTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F15F4715AB73EB78A444B5FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteRecordUITests/Pods-NoteRecordUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F31FAECDB3E867183046331E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoteRecord/Pods-NoteRecord-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -810,9 +947,10 @@
 				DA83EF521CC499A0006ACD98 /* SDWebImagePrefetcher.m in Sources */,
 				DAC5D27D1CAE5CCB002D2C86 /* DeployDelegate.m in Sources */,
 				DAC5D2E41CAF8642002D2C86 /* FMDBManager.m in Sources */,
+				DA97B6FC1E80D1DB0064032E /* LLSimpleCamera.m in Sources */,
+				DA97B6FB1E80D1DB0064032E /* LLSimpleCamera+Helper.m in Sources */,
 				DA83EF271CC498DF006ACD98 /* SDWaitingView.m in Sources */,
 				DA83EF591CC499A0006ACD98 /* UIView+WebCacheOperation.m in Sources */,
-				DAE162521CAE42BE00F74739 /* LZViewController.m in Sources */,
 				DA83EF501CC499A0006ACD98 /* SDWebImageDownloaderOperation.m in Sources */,
 				DAC5D2791CAE5C53002D2C86 /* LZNavigationController.m in Sources */,
 				DA83EF5C1CD1E3C1006ACD98 /* UIImage+Rotation.m in Sources */,
@@ -841,10 +979,12 @@
 				DA8188651CBF70B800A4D94E /* LZLabel.m in Sources */,
 				DA83EF4E1CC499A0006ACD98 /* SDWebImageDecoder.m in Sources */,
 				DA83EF4C1CC499A0006ACD98 /* SDImageCache.m in Sources */,
+				DA97B6FD1E80D1DB0064032E /* UIImage+FixOrientation.m in Sources */,
 				DA83EF4A1CC499A0006ACD98 /* MKAnnotationView+WebCache.m in Sources */,
 				DA81888C1CC1E83100A4D94E /* CustomCell.m in Sources */,
 				DAC5D2B41CAE69F1002D2C86 /* Coordinate.m in Sources */,
 				DAC5D26E1CAE5A5A002D2C86 /* LZAppDelegate.m in Sources */,
+				DA97B6F21E80CD850064032E /* LZViewController.m in Sources */,
 				DAC5D2C31CAE75A5002D2C86 /* PersonalViewController.m in Sources */,
 				DA83EF4B1CC499A0006ACD98 /* NSData+ImageContentType.m in Sources */,
 				DA83EF571CC499A0006ACD98 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -988,10 +1128,12 @@
 		};
 		DAE162751CAE42BE00F74739 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 234ACE825F1F0523C7830A39 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = FAF0BCC13556A85080E486D6 /* Pods-NoteRecord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yanqing  Jia (NYAFGD4L8U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DZNJ4F4E32;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NoteRecord/AppDelegate/PrefixHeader.pch";
 				INFOPLIST_FILE = NoteRecord/Info.plist;
@@ -999,17 +1141,18 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LZ-1994.NoteRecord";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6b96dc27-6e88-4830-ba38-b6f401c177b4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		DAE162761CAE42BE00F74739 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 729963EC73CE6E72C24D621E /* Pods.release.xcconfig */;
+			baseConfigurationReference = E9D2C4A14EA34D37EAB0510C /* Pods-NoteRecord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yanqing  Jia (NYAFGD4L8U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DZNJ4F4E32;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NoteRecord/AppDelegate/PrefixHeader.pch";
 				INFOPLIST_FILE = NoteRecord/Info.plist;
@@ -1017,12 +1160,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LZ-1994.NoteRecord";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6b96dc27-6e88-4830-ba38-b6f401c177b4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		DAE162781CAE42BE00F74739 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDFF6FC5840F3862EC4C6A55 /* Pods-NoteRecordTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = NoteRecordTests/Info.plist;
@@ -1035,6 +1179,7 @@
 		};
 		DAE162791CAE42BE00F74739 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B13B0C62BA26BA84C874075B /* Pods-NoteRecordTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = NoteRecordTests/Info.plist;
@@ -1047,6 +1192,7 @@
 		};
 		DAE1627B1CAE42BE00F74739 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE880D31BB1940F18E0F3DB /* Pods-NoteRecordUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = NoteRecordUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1058,6 +1204,7 @@
 		};
 		DAE1627C1CAE42BE00F74739 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D72FA9EEF074E982E3A28A2F /* Pods-NoteRecordUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = NoteRecordUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

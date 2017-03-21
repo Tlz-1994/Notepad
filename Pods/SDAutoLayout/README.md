@@ -1,28 +1,27 @@
 # SDAutoLayout（一行代码搞定自动布局！）
+
+##众多公司和个人开发者已经使用本库布局：
+SDAutoLayout使用者开发的部分app截图 http://www.jianshu.com/p/9bc04d3effb8
+
 一行代码搞定自动布局！致力于做最简单易用的Autolayout库。The most easy way for autolayout.
 
-支持pod：  pod 'SDAutoLayout', '~> 1.31'
+## 技术支持(QQ交流群)：
+
+497140713（1群）  519489682（2群已满）
+
+##Pod支持：
+
+支持pod：  pod 'SDAutoLayout', '~> 1.52'
 
 如果发现pod search SDAutoLayout 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行pod setup命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了
 
-### QQ交流群：519489682（已满）497140713
-
-☆☆ SDAutoLayout 基础版视频教程：http://www.letv.com/ptv/vplay/24038772.html ☆☆
-
-☆☆ SDAutoLayout 进阶版视频教程：http://www.letv.com/ptv/vplay/24381390.html ☆☆
-
-☆☆ SDAutoLayout 原理简介视频教程：http://www.iqiyi.com/w_19rt0tec4p.html ☆☆
-
-## 部分SDAutoLayout的DEMO
-### SDAutoLayout使用者开发的部分app截图 http://www.jianshu.com/p/9bc04d3effb8
-### 完整微信Demo https://github.com/gsdios/GSD_WeiXin
-
-![](http://ww3.sinaimg.cn/mw690/9b8146edgw1f1nm3pziawg205u0a0qv5.gif)![](http://ww1.sinaimg.cn/bmiddle/9b8146edgw1f06aoe2umhg206e0b4u0x.gif)![](http://ww4.sinaimg.cn/bmiddle/9b8146edgw1ezal3smihcg206y0ciqv5.gif)![](http://ww3.sinaimg.cn/mw690/9b8146edgw1f1nm3lweg3g207s0dcu0x.gif)![](http://ww2.sinaimg.cn/mw690/9b8146edgw1f23irukb0qg207i0dwu0x.gif)![](http://ww2.sinaimg.cn/bmiddle/9b8146edgw1eya1jv951ig208c0etqv5.gif)
-
-
 ## 更新记录：
 
-2016.03.23 -- 升级了缓存机制，新版本在tableview滑动cell时候流畅度和性能提升20%以上
+2016.04.30 -- 修复之前button作为父视图时内部控件不能自动布局问题
+
+2016.04.05 -- 修复宽度自适应label在重用时候偶尔出现的宽度计算不准确的问题（发布pod1.51版本）
+
+2016.03.23 -- 升级了缓存机制，新版本在tableview滑动cell时候流畅度和性能提升20%以上（发布pod1.50版本）
 
 2016.01.23 -- 增加label对attributedString的内容自适应
 
@@ -41,14 +40,26 @@
 2015.12.08 -- 重大升级：1.支持scrollview内容自适应；2.任意添加或者修改约束不冲突；3.性能提升40%以上；4.添加最大、最小宽高约束
 
 
+## 视频教程：
+☆☆ SDAutoLayout 基础版视频教程：http://www.letv.com/ptv/vplay/24038772.html ☆☆
+
+☆☆ SDAutoLayout 进阶版视频教程：http://www.letv.com/ptv/vplay/24381390.html ☆☆
+
+☆☆ SDAutoLayout 原理简介视频教程：http://www.iqiyi.com/w_19rt0tec4p.html ☆☆
+
+## 部分SDAutoLayout的DEMO：
+
+完整微信Demo https://github.com/gsdios/GSD_WeiXin
+
+![](http://ww3.sinaimg.cn/mw690/9b8146edgw1f1nm3pziawg205u0a0qv5.gif)![](http://ww1.sinaimg.cn/bmiddle/9b8146edgw1f06aoe2umhg206e0b4u0x.gif)![](http://ww4.sinaimg.cn/bmiddle/9b8146edgw1ezal3smihcg206y0ciqv5.gif)![](http://ww3.sinaimg.cn/mw690/9b8146edgw1f1nm3lweg3g207s0dcu0x.gif)![](http://ww2.sinaimg.cn/mw690/9b8146edgw1f23irukb0qg207i0dwu0x.gif)![](http://ww2.sinaimg.cn/bmiddle/9b8146edgw1eya1jv951ig208c0etqv5.gif)
 
 
 
+#   用法简介
 
-#    ☆新增：cell高度自适应 + label文字自适应☆
+## tableview和cell高度自适应：   
 
-
-##    >> 普通（简化）版【推荐使用】：tableview 高度自适应设置只需要2步
+####普通（简化）版【推荐使用】：tableview 高度自适应设置只需要2步
     
     1. >> 设置cell高度自适应：
     // cell布局设置好之后调用此方法就可以实现高度自适应（注意：如果用高度自适应则不要再以cell的底边为参照去布局其子view）
@@ -64,7 +75,7 @@
     }
 
 
-##    >> 升级版（适应于cell条数少于100的tableview）：tableview 高度自适应设置只需要2步
+####升级版（适应于cell条数少于100的tableview）：tableview 高度自适应设置只需要2步
     
     1. >> 设置cell高度自适应：
     // cell布局设置好之后调用此方法就可以实现高度自适应（注意：如果用高度自适应则不要再以cell的底边为参照去布局其子view）
@@ -79,11 +90,9 @@
     }
     
     
-# ***********  普通view的自动布局  ***********
+## 普通view的自动布局：
 
-## 摒弃复杂累赘的约束，利用运行时Runtime在合适的时机布局视图。
-
-## 0.用法示例
+#### 用法示例
     /* 用法一 */
     _view.sd_layout
     .leftSpaceToView(self.view, 10)
@@ -121,7 +130,7 @@
         .rightSpaceToView(self.view, 10);
     *******************************************************************************
 
-## 1.用法简析
+#### 自动布局用法简析
 
 ![](http://ww1.sinaimg.cn/mw690/9b8146edgw1ex4or5ixkjj20k60gw3zg.jpg)
 

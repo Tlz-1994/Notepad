@@ -30,7 +30,6 @@
 #import "SDWeiXinPhotoContainerView.h"
 
 #import "UIView+SDAutoLayout.h"
-
 #import "SDPhotoBrowser.h"
 
 @interface SDWeiXinPhotoContainerView () <SDPhotoBrowserDelegate>
@@ -100,8 +99,13 @@
         long rowIndex = idx / perRowItemCount;
         UIImageView *imageView = [_imageViewsArray objectAtIndex:idx];
         imageView.hidden = NO;
-        imageView.image = [UIImage imageNamed:obj];
-        imageView.frame = CGRectMake(columnIndex * (itemW + margin), rowIndex * (itemH + margin), itemW, itemH);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *image = [UIImage imageNamed:obj];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                imageView.image = image;
+                imageView.frame = CGRectMake(columnIndex * (itemW + margin), rowIndex * (itemH + margin), itemW, itemH);
+            });
+        });
     }];
     
     CGFloat w = perRowItemCount * itemW + (perRowItemCount - 1) * margin;

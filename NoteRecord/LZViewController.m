@@ -17,6 +17,7 @@
 #import "RecordModel.h"
 #import "FMDBManager.h"
 #import "UIImage+Rotation.h"
+#import "LLSimpleCamera.h"
 #import <CoreLocation/CoreLocation.h>
 
 typedef NS_ENUM(NSInteger, PhotoType) {
@@ -36,7 +37,9 @@ typedef NS_ENUM(NSInteger, PhotoType) {
     AMapSearchAPI *_search;   // 搜索的API
 }
 
-@property (nonatomic,strong) FancyTabBar *fancyTabBar;
+@property (nonatomic, strong) LLSimpleCamera *camera;
+
+@property (nonatomic, strong) FancyTabBar *fancyTabBar;
 @property (nonatomic, strong) UIImageView *bgImageView;
 @property (nonatomic, strong) AMapLocationManager *locationManager;
 @property (nonatomic, strong) WeatherModel *weatherModel;
@@ -217,6 +220,53 @@ typedef NS_ENUM(NSInteger, PhotoType) {
         _longitudeLabel.text = [NSString stringWithFormat:@"经度:%@", self.weatherModel.longitude? self.weatherModel.longitude : @"......"];
         _latitudeLabel.text = [NSString stringWithFormat:@"纬度:%@", self.weatherModel.latitude? self.weatherModel.latitude : @"......"];
         _humidityLabel.text = [NSString stringWithFormat:@"空气湿度:%@", self.weatherModel.humidity? self.weatherModel.humidity : @"......"];
+    }
+    
+    UIButton *caremaButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    caremaButton.frame = CGRectMake(kWidth-50, kHeight-50, 50, 50);
+    [self.view addSubview:caremaButton];
+    [caremaButton addTarget:self action:@selector(takePhotos:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *starButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    starButton.frame = CGRectMake(0, kHeight-50, 50, 50);
+    [self.view addSubview:starButton];
+    [starButton addTarget:self action:@selector(starCarema:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - 拍照模块（不知不觉就拍了）
+- (void)creatCarema {
+    self.camera = [[LLSimpleCamera alloc] initWithQuality:AVCaptureSessionPresetPhoto
+                                                 position:LLCameraPositionRear
+                                             videoEnabled:YES];
+    [self.camera attachToViewController:self withFrame:CGRectMake(kWidth-70, kHeight-180, 50, 50)];
+    self.camera.view.backgroundColor = [UIColor orangeColor];
+    self.camera.fixOrientationAfterCapture = NO;
+    [self.camera setOnDeviceChange:^(LLSimpleCamera *camera, AVCaptureDevice * device) {
+    }];
+    
+    [self.camera setOnError:^(LLSimpleCamera *camera, NSError *error) {
+    }];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 50, 50) cornerRadius:25];
+    CAShapeLayer *layer = [CAShapeLayer layer];
+    layer.frame = self.camera.view.bounds;
+    layer.path = path.CGPath;
+    self.camera.view.layer.mask = layer;
+    self.camera.view.userInteractionEnabled = YES;
+    [self.camera start];
+    
+}
+
+- (void)starCarema:(UIButton *)sender {
+    [self creatCarema];
+}
+
+- (void)takePhotos:(UIButton *)sender {
+    if (self.camera) {
+        [self.camera capture:^(LLSimpleCamera *camera, UIImage *image, NSDictionary *metadata, NSError *error) {
+            if(!error) {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+            }
+        } exactSeenImage:YES];
     }
 }
 

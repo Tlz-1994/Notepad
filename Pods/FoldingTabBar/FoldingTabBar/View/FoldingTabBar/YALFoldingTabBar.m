@@ -19,14 +19,13 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
 
 @property (nonatomic, strong) NSArray *allBarItems;
 
-@property (nonatomic, assign) YALTabBarState state;
 @property (nonatomic, assign) YALAnimatingState animatingState;
 @property (nonatomic, assign) BOOL isFinishedCenterButtonAnimation;
 
 @property (nonatomic, strong) UIButton *centerButton;
 @property (nonatomic, strong) UIView *mainView;
 
-@property (nonatomic, assign) BOOL isAnimated;
+@property (nonatomic, assign, getter = isAnimating) BOOL animating;
 
 @property (nonatomic, assign) CGRect collapsedFrame;
 @property (nonatomic, assign) CGRect expandedFrame;
@@ -56,15 +55,20 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
 
 @implementation YALFoldingTabBar
 
-#pragma mark - Initialations
+#pragma mark - Instantiation
 
-- (instancetype)initWithFrame:(CGRect)frame state:(YALTabBarState)state {
-    self = [super initWithFrame:frame];
+
+- (instancetype)initWithController:(YALFoldingTabBarController *)controller {
+    self = [super initWithFrame:CGRectZero];
+    
     if (self) {
-        _state = state;
+        _delegate = (id<YALTabBarDelegate>)controller;
+        _dataSource = (id<YALTabBarDataSource>)controller;
         _selectedTabBarItemIndex = 0;
         _counter = 0;
+        _dotColor = [UIColor blackColor];
     }
+    
     return self;
 }
 
@@ -72,6 +76,25 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
     [super layoutSubviews];
     
     [self setupUI];
+}
+
+- (void)setState:(YALTabBarState)state {
+    if (_state == state) {
+        return;
+    }
+    
+    switch (state) {
+        case YALTabBarStateCollapsed: {
+            [self collapse];
+            break;
+        }
+        case YALTabBarStateExpanded: {
+            [self expand];
+            break;
+        }
+    }
+    
+    _state = state;
 }
 
 #pragma mark - Private
@@ -199,9 +222,9 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
         }
         
         [button setImage:image forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(barItemDidTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(didTapBarItem:) forControlEvents:UIControlEventTouchUpInside];
         
-        if (self.state == YALStateCollapsed) {
+        if (self.state == YALTabBarStateCollapsed) {
           button.hidden = YES;
         }
         
@@ -252,9 +275,9 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
         }
         
         [button setImage:image forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(barItemDidTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(didTapBarItem:) forControlEvents:UIControlEventTouchUpInside];
         
-        if (self.state == YALStateCollapsed) {
+        if (self.state == YALTabBarStateCollapsed) {
             button.hidden = YES;
         }
         [mutableArray addObject:button];
@@ -290,7 +313,7 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
     self.extraLeftButton.layer.cornerRadius = CGRectGetWidth(self.extraLeftButton.frame) / 2.f;
     self.extraLeftButton.layer.masksToBounds = YES;
     
-    [self.extraLeftButton addTarget:self action:@selector(extraLeftButtonDidPress) forControlEvents:UIControlEventTouchUpInside];
+    [self.extraLeftButton addTarget:self action:@selector(didPressExtraLeftButton:) forControlEvents:UIControlEventTouchUpInside];
     self.extraLeftButton.hidden = YES;
     
     [self addSubview:self.extraLeftButton];
@@ -301,7 +324,7 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
     self.extraLeftButton.layer.masksToBounds = YES;
     
     self.extraRightButton.backgroundColor = self.tabBarColor;
-    [self.extraRightButton addTarget:self action:@selector(extraRightButtonDidPress) forControlEvents:UIControlEventTouchUpInside];
+    [self.extraRightButton addTarget:self action:@selector(didPressExtraRightButton:) forControlEvents:UIControlEventTouchUpInside];
     self.extraRightButton.hidden = YES;
 
     [self addSubview:self.extraRightButton];
@@ -326,7 +349,8 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
         UIView *dotView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, YALBottomSelectedDotDefaultSize,YALBottomSelectedDotDefaultSize)];
         dotView.center = CGPointMake(button.center.x, button.center.y + YALBottomSelectedDotOffset);
         dotView.layer.cornerRadius = CGRectGetHeight(dotView.frame) / 2.f;
-        dotView.backgroundColor = self.dotColor ? self.dotColor : [UIColor blackColor];
+        dotView.backgroundColor = self.dotColor;
+
         dotView.hidden = YES;
         [self.mainView addSubview:dotView];
         [self.allAdditionalButtonsBottomView addObject:dotView];
@@ -340,7 +364,7 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
     }
     
     //collapse mainView. tabBarItams are hidden.
-    if (self.state == YALStateExpanded) {
+    if (self.state == YALTabBarStateExpanded) {
         self.centerButton.transform = CGAffineTransformMakeRotation(M_PI_4);
     }
     self.mainView.frame = self.expandedFrame;
@@ -354,14 +378,14 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
         [self.allAdditionalButtonsBottomView replaceObjectAtIndex:self.selectedTabBarItemIndex withObject:previousSelectedDotView];
     }
     
-    if (self.state == YALStateExpanded) {
+    if (self.state == YALTabBarStateExpanded) {
 
         UIView *previousSelectedDotView = self.allAdditionalButtonsBottomView [self.selectedTabBarItemIndex];
         previousSelectedDotView.hidden = NO;
         [self.allAdditionalButtonsBottomView replaceObjectAtIndex:self.selectedTabBarItemIndex withObject:previousSelectedDotView];
     }
     
-    if (self.state == YALStateExpanded && self.selectedTabBarItemIndex == index) {
+    if (self.state == YALTabBarStateExpanded && self.selectedTabBarItemIndex == index) {
         [self hideExtraLeftTabBarItem];
         [self hideExtraRightTabBarItem];
     }
@@ -371,7 +395,7 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
     //check if selected view controller needs extraLeftButton or extraRightButton
     YALTabBarItem *defaultSelectedTabBarItem = [self.allBarItems objectAtIndex:index];
     [self configureExtraTabBarItemWithModel:defaultSelectedTabBarItem];
-    if (self.state == YALStateCollapsed) {
+    if (self.state == YALTabBarStateCollapsed) {
   
         
         if (defaultSelectedTabBarItem.leftImage) {
@@ -414,28 +438,28 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
     
     self.counter ++;
     
-    if (!self.isAnimated) {
-        if (self.state == YALStateCollapsed) {
-            [self expand];
+    if (![self isAnimating]) {
+        if (self.state == YALTabBarStateCollapsed) {
+            self.state = YALTabBarStateExpanded;
         } else {
-            [self collapse];
+            self.state = YALTabBarStateCollapsed;
         }
     } else {
         if (self.animatingState == YALAnimatingStateCollapsing) {
-            [self expand];
+            self.state = YALTabBarStateExpanded;
         } else  if (self.animatingState == YALAnimatingStateExpanding) {
-            [self collapse];
+            self.state = YALTabBarStateCollapsed;
         }
     }
 }
 
-- (IBAction)barItemDidTapped:(id)sender {
-    if (self.isAnimated) {
-        return;
-    }
-    
+- (void)didTapBarItem:(id)sender {
     NSUInteger index = [self.allAdditionalButtons indexOfObject:sender];
     
+    if (![self.delegate tabBar:self shouldSelectItemAtIndex:index] || [self isAnimating]) {
+        return;
+    }
+        
     if (self.selectedTabBarItemIndex != index) {
         YALTabBarItem *item = [self.allBarItems objectAtIndex:index];
         [self configureExtraTabBarItemWithModel:item];
@@ -447,26 +471,26 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
     
     self.selectedTabBarItemIndex = index;
     
-    if ([self.delegate respondsToSelector:@selector(tabBarViewWillCollapse:)]) {
-        [self.delegate tabBarViewWillCollapse:self];
+    if ([self.delegate respondsToSelector:@selector(tabBarWillCollapse:)]) {
+        [self.delegate tabBarWillCollapse:self];
     }
 
-    [self collapse];
+    self.state = YALTabBarStateCollapsed;
     
-    if ([self.delegate respondsToSelector:@selector(itemInTabBarViewPressed:atIndex:)]) {
-        [self.delegate itemInTabBarViewPressed:self atIndex:index];
+    if ([self.delegate respondsToSelector:@selector(tabBar:didSelectItemAtIndex:)]) {
+        [self.delegate tabBar:self didSelectItemAtIndex:index];
     }
 }
 
-- (void)extraLeftButtonDidPress {
-    if ([self.delegate respondsToSelector:@selector(extraLeftItemDidPressInTabBarView:)]) {
-        [self.delegate extraLeftItemDidPressInTabBarView:self];
+- (void)didPressExtraLeftButton:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(tabBarDidSelectExtraLeftItem:)]) {
+        [self.delegate tabBarDidSelectExtraLeftItem:self];
     }
 }
 
-- (void)extraRightButtonDidPress {
-    if ([self.delegate respondsToSelector:@selector(extraRightItemDidPressInTabBarView:)]) {
-        [self.delegate extraRightItemDidPressInTabBarView:self];
+- (void)didPressExtraRightButton:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(tabBarDidSelectExtraRightItem:)]) {
+        [self.delegate tabBarDidSelectExtraRightItem:self];
     }
 }
 
@@ -475,16 +499,15 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
 - (void)expand {
     self.isFinishedCenterButtonAnimation = NO;
     self.animatingState = YALAnimatingStateExpanding;
-    self.state = YALStateExpanded;
     
-    if ([self.delegate respondsToSelector:@selector(tabBarViewWillExpand:)]) {
-        [self.delegate tabBarViewWillExpand:self];
+    if ([self.delegate respondsToSelector:@selector(tabBarWillExpand:)]) {
+        [self.delegate tabBarWillExpand:self];
     }
     
     __block NSUInteger counterCurrentValue = self.counter;
     
     [CATransaction transactionWithAnimations:^{
-        self.isAnimated = YES;
+        [self setAnimating:YES];
         [self animateTabBarViewExpand];
         [self hideExtraLeftTabBarItem];
         [self hideExtraRightTabBarItem];
@@ -493,10 +516,10 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
         [self showSelectedDotView];
     } andCompletion:^{
         if (counterCurrentValue == self.counter) {
-            if ([self.delegate respondsToSelector:@selector(tabBarViewDidExpand:)]) {
-                [self.delegate tabBarViewDidExpand:self];
+            if ([self.delegate respondsToSelector:@selector(tabBarDidExpand:)]) {
+                [self.delegate tabBarDidExpand:self];
             }
-            self.isAnimated = NO;
+            [self setAnimating:NO];
         }
     }];
 }
@@ -504,16 +527,15 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
 - (void)collapse {
     self.isFinishedCenterButtonAnimation = NO;
     self.animatingState = YALAnimatingStateCollapsing;
-    self.state = YALStateCollapsed;
     
-    if ([self.delegate respondsToSelector:@selector(tabBarViewWillCollapse:)]) {
-        [self.delegate tabBarViewWillCollapse:self];
+    if ([self.delegate respondsToSelector:@selector(tabBarWillCollapse:)]) {
+        [self.delegate tabBarWillCollapse:self];
     }
     
     __block NSUInteger counterCurrentValue = self.counter;
     
     [CATransaction transactionWithAnimations:^{
-        self.isAnimated = YES;
+        [self setAnimating:YES];
         [self animateTabBarViewCollapse];
         [self showExtraLeftTabBarItem];
         [self showExtraRightTabBarItem];
@@ -522,11 +544,11 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
         [self animateAdditionalButtons];
     } andCompletion:^{
         if (counterCurrentValue == self.counter) {
-            if ([self.delegate respondsToSelector:@selector(tabBarViewDidCollapse:)]) {
-                [self.delegate tabBarViewDidCollapse:self];
+            if ([self.delegate respondsToSelector:@selector(tabBarDidCollapse:)]) {
+                [self.delegate tabBarDidCollapse:self];
             }
         }
-        self.isAnimated = NO;
+        [self setAnimating:NO];
     }];
 }
 
@@ -656,12 +678,19 @@ typedef NS_ENUM(NSUInteger, YALAnimatingState) {
 - (void)updateMaskLayer {
     self.mainView.layer.mask = ({
         CAShapeLayer *layer = [CAShapeLayer new];
-        CGRect rect = (self.state == YALStateExpanded) ? self.expandedBounds : self.collapsedBounds;
+        CGRect rect = (self.state == YALTabBarStateExpanded) ? self.expandedBounds : self.collapsedBounds;
         
         layer.path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:rect.size.height / 2].CGPath;
         
         layer;
     });
+}
+
+// will "activate" touches behind tabBar or better between tabBarItems
+-(id)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    id hitView = [super hitTest:point withEvent:event];
+    if (hitView == self.mainView) return nil;
+    else return hitView;
 }
 
 @end
