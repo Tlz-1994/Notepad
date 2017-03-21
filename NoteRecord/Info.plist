@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
+	<key>CFBundleDisplayName</key>
+	<string>NoteRecord</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -31,6 +33,8 @@
 	<string>打开摄像头，来一发自拍</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>AMapLocationKit需要定位权限才可以使用</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>来来来，打开让我听一听</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>我要看你的相册，快点允许</string>
 	<key>UIBackgroundModes</key>
