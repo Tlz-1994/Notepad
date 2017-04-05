@@ -41,7 +41,8 @@
     
     _messageLabel = [[UILabel alloc] init];
     _messageLabel.font = [UIFont systemFontOfSize:14.0];
-    _messageLabel.textColor = LZColor(54, 71, 121);
+    _messageLabel.textColor = LZColor(0, 0, 0);
+    _messageLabel.numberOfLines = 0;
     
     _picContainerView = [[SDWeiXinPhotoContainerView alloc] init];
     
@@ -125,7 +126,6 @@
     _placeLabel.text = model.place;
     _timelabel.text = model.time;
     _weatherLabel.text = model.weather;
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

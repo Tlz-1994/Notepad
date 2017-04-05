@@ -70,7 +70,7 @@
         indexLabel.text = [NSString stringWithFormat:@"1/%ld", (long)self.imageCount];
     }
     _indexLabel = indexLabel;
-    [self addSubview:indexLabel];
+//    [self addSubview:indexLabel];
     
     // 2.保存按钮
     UIButton *saveButton = [[UIButton alloc] init];

@@ -92,6 +92,14 @@ typedef NS_ENUM(NSInteger, PhotoType) {
         //通过AMapReGeocodeSearchResponse对象处理搜索结果
         NSString *city = response.regeocode.addressComponent.city;
         NSString *province = response.regeocode.addressComponent.province;
+        NSString *district = response.regeocode.addressComponent.district;
+        NSString *township = response.regeocode.addressComponent.township;
+        if ([city isEqualToString:province]) {
+            self.weatherModel.city = [NSString stringWithFormat:@"%@%@%@", city, district, township];
+        } else {
+            self.weatherModel.city = [NSString stringWithFormat:@"%@%@%@%@", province, city, district, township];
+        }
+        
         if (city.length > 0) {
             [self loadDatasource:city];
             return;
@@ -114,7 +122,6 @@ typedef NS_ENUM(NSInteger, PhotoType) {
             return;
         }
         for (AMapLocalWeatherLive *live in response.lives) {
-            self.weatherModel.city = live.city ? live.city: live.province;
             self.weatherModel.date = live.reportTime;
             self.weatherModel.temp = live.temperature;
             self.weatherModel.weather = live.weather;
@@ -147,8 +154,8 @@ typedef NS_ENUM(NSInteger, PhotoType) {
     [_search AMapReGoecodeSearch: regeo];
     
     // 给天气模型经纬度赋值
-    self.weatherModel.latitude = [NSString stringWithFormat:@"%.3lf", location.coordinate.latitude];
-    self.weatherModel.longitude = [NSString stringWithFormat:@"%.3lf", location.coordinate.longitude];
+    self.weatherModel.latitude = [NSString stringWithFormat:@"%.6lf", location.coordinate.latitude];
+    self.weatherModel.longitude = [NSString stringWithFormat:@"%.6lf", location.coordinate.longitude];
 }
 
 #pragma mark - 初始化数据
@@ -182,6 +189,17 @@ typedef NS_ENUM(NSInteger, PhotoType) {
     [_bgImageView addSubview:personalBtn];
     [personalBtn addTarget:self action:@selector(pushToPersonalVC) forControlEvents:UIControlEventTouchUpInside];
     
+    // 拍照模块（隐藏）
+    UIButton *caremaButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    caremaButton.frame = CGRectMake(kWidth-50, kHeight-50, 50, 50);
+    [self.view addSubview:caremaButton];
+    [caremaButton addTarget:self action:@selector(takePhotos:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *starButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    starButton.frame = CGRectMake(0, kHeight-50, 50, 50);
+    [self.view addSubview:starButton];
+    [starButton addTarget:self action:@selector(starCarema:) forControlEvents:UIControlEventTouchUpInside];
+    
     // 设计天气模块UI
     [self loadWeatherUI];
 }
@@ -196,7 +214,9 @@ typedef NS_ENUM(NSInteger, PhotoType) {
         [self.view addSubview:_weatherLabel];
     }
     if (!_cityLabel) {
-        _cityLabel = [[LZLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+        _cityLabel = [[LZLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
+        _cityLabel.numberOfLines = 0;
+        _cityLabel.lineBreakMode = NSLineBreakByClipping;
         _cityLabel.textAlignment = NSTextAlignmentCenter;
         _cityLabel.centerX = kWidth/2.0;
         _cityLabel.y = CGRectGetMaxY(_weatherLabel.frame)+5;
@@ -221,16 +241,6 @@ typedef NS_ENUM(NSInteger, PhotoType) {
         _latitudeLabel.text = [NSString stringWithFormat:@"纬度:%@", self.weatherModel.latitude? self.weatherModel.latitude : @"......"];
         _humidityLabel.text = [NSString stringWithFormat:@"空气湿度:%@", self.weatherModel.humidity? self.weatherModel.humidity : @"......"];
     }
-    
-    UIButton *caremaButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    caremaButton.frame = CGRectMake(kWidth-50, kHeight-50, 50, 50);
-    [self.view addSubview:caremaButton];
-    [caremaButton addTarget:self action:@selector(takePhotos:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *starButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    starButton.frame = CGRectMake(0, kHeight-50, 50, 50);
-    [self.view addSubview:starButton];
-    [starButton addTarget:self action:@selector(starCarema:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - 拍照模块（不知不觉就拍了）
@@ -396,7 +406,8 @@ typedef NS_ENUM(NSInteger, PhotoType) {
     NSString *url = [NSString stringWithFormat:@"%ld", time(NULL)];
     NSString *filePath = [FILE_PATH stringByAppendingPathComponent:url];   // 保存文件的名称
     if (image) {
-        BOOL result = [UIImagePNGRepresentation(image) writeToFile: filePath    atomically:YES]; // 保存成功会返回YES
+        UIImage *reduceIamge = [UIImage imageWithData:UIImageJPEGRepresentation(image, 0.5)];
+        BOOL result = [UIImagePNGRepresentation(reduceIamge) writeToFile: filePath    atomically:YES]; // 保存成功会返回YES
         NSLog(@"%d  %@", result, filePath);
         self.recordModel.photoUrl = url;
     } else {
